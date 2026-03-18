@@ -1,4 +1,4 @@
-<h1 align="center">👕 Fjoren</h1>
+<h1 align="center"> Fjoren</h1>
 
 <p align="center">
   Loja de roupas com <strong>provador virtual</strong>, proporcionando uma experiência moderna e interativa.
@@ -6,7 +6,7 @@
 
 ---
 
-## 🧠 Sobre o Projeto
+##  Sobre o Projeto
 
 O <strong>Fjoren</strong> é um sistema de loja de roupas que integra um <strong>provador virtual</strong>, permitindo que os usuários visualizem como as peças ficariam antes de realizar uma compra.
 
