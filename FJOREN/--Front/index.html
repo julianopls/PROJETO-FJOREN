@@ -1,11 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FJOREN</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <!-- ESQUERDA -->
+        <a class="navbar-brand fw-bold" href="#">FJOREN</a>
+
+        <!-- CENTRO -->
+        <div class="collapse navbar-collapse justify-content-center">
+            <ul class="navbar-nav gap-4">
+                <li class="nav-item"><a class="nav-link" href="#">INICIO</a></li>
+                <li class="nav-item"><a class="nav-link" href="#categorias">CATEGORIAS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#colecao">COLEÇÃO</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">SOBRE</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">CONTATO</a></li>
+            </ul>
+        </div>
+
+        <!-- DIREITA -->
+        <button onclick="toggleSacola()" class="btn text-light ms-auto">🛍</button>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container content text-light">
+        <h1 class="title">T-SHIRT</h1>
+        <h4 class="subtitle">Basic Pack</h4>
+
+        <h2 class="price">R$159,99</h2>
+
+        <p class="desc">
+            Pack de camisetas básicas com design minimalista e versátil.
+        </p>
+
+        <button onclick="document.getElementById('colecao').scrollIntoView({behavior:'smooth'})" class="btn btn-custom mt-4">
+            VER COLEÇÃO
+        </button>
+    </div>
+
+    <div class="sidebar">
+        NEW ERA OF FASHION
+    </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section id="categorias" class="categorias">
+
+    <h2 class="titulo-colecao text-center text-light">CATEGORIAS</h2>
+
+    <div class="carousel-container">
+
+        <button class="nav-btn" onclick="voltar()">❮</button>
+        <div class="cards" id="cards"></div>
+        <button class="nav-btn" onclick="avancar()">❯</button>
+
+    </div>
+
+</section>
+
+<!-- COLEÇÃO -->
+<section id="colecao" class="colecao">
+    <div class="container">
+
+        <h2 class="titulo-colecao">COLEÇÃO</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div id="produto-1" class="card-produto" onclick="abrirProduto(1)">
+                    <img src="img/fjoren1.png">
+                    <p class="categoria">CAMISETAS</p>
+                    <h5>Camiseta Preta Essential</h5>
+                    <span>R$89,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-2" class="card-produto" onclick="abrirProduto(2)">
+                    <img src="img/fjoren2.png">
+                    <p class="categoria">CAMISETAS</p>
+                    <h5>Camiseta Branca Classic</h5>
+                    <span>R$89,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-3" class="card-produto" onclick="abrirProduto(3)">
+                    <img src="img/fjoren3.png">
+                    <p class="categoria">MOLETONS</p>
+                    <h5>Hoodie Navy Premium</h5>
+                    <span>R$199,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-4" class="card-produto" onclick="abrirProduto(4)">
+                    <img src="img/fjoren4.png">
+                    <p class="categoria">CALÇAS</p>
+                    <h5>Calça Cargo Olive</h5>
+                    <span>R$179,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-5" class="card-produto" onclick="abrirProduto(5)">
+                    <img src="img/fjoren5.png">
+                    <p class="categoria">MOLETONS</p>
+                    <h5>Moletom Cinza</h5>
+                    <span>R$149,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-6" class="card-produto" onclick="abrirProduto(6)">
+                    <img src="img/fjoren6.png">
+                    <p class="categoria">CALÇAS</p>
+                    <h5>Jeans Slim Black</h5>
+                    <span>R$159,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-7" class="card-produto" onclick="abrirProduto(7)">
+                    <img src="img/fjoren7.png">
+                    <p class="categoria">JAQUETAS</p>
+                    <h5>Jaqueta Bege</h5>
+                    <span>R$229,99</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div id="produto-8" class="card-produto" onclick="abrirProduto(8)">
+                    <img src="img/fjoren8.png">
+                    <p class="categoria">BONÉS</p>
+                    <h5>Boné Preto</h5>
+                    <span>R$79,99</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- SACOLA -->
+<div id="sacola" class="sacola">
+    <h3>Sacola</h3>
+    <div id="itens-sacola"></div>
+    <button class="comprar">Finalizar Compra</button>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>

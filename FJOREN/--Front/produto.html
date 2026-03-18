@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produto</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="navbar">
+    <a href="index.html">← Voltar</a>
+    <button onclick="toggleSacola()">🛍</button>
+</div>
+
+<!-- PRODUTO -->
+<section class="produto-page">
+
+    <div class="produto-container">
+
+        <!-- IMAGEM -->
+        <img id="img-produto" class="img-produto">
+
+        <!-- INFO -->
+        <div class="info-produto">
+
+            <h2 id="nome-produto"></h2>
+            <h3 id="preco-produto"></h3>
+
+            <!-- TAMANHOS -->
+            <div class="tamanhos">
+                <button class="tamanho-btn" onclick="selecionarTamanho(this)">P</button>
+                <button class="tamanho-btn" onclick="selecionarTamanho(this)">M</button>
+                <button class="tamanho-btn" onclick="selecionarTamanho(this)">G</button>
+                <button class="tamanho-btn" onclick="selecionarTamanho(this)">GG</button>
+                <button class="tamanho-btn" onclick="selecionarTamanho(this)">XG</button>
+            </div>
+
+            <!-- QUANTIDADE -->
+            <input type="number" id="qtd" class="qtd" value="1">
+
+            <!-- BOTÃO -->
+            <button class="btn-sacola" onclick="add()">
+                Adicionar à sacola
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+<script>
+const produtos = [
+    { nome: "Camiseta Preta", preco: "R$89,99", img: "img/roupa 1.png" },
+    { nome: "Camiseta Branca", preco: "R$89,99", img: "img/roupa 2.png" },
+    { nome: "Hoodie Navy Premium", preco: "R$89,99", img: "img/roupa 3.png" },
+    { nome: "Calça Cargo", preco: "R$89,99", img: "img/roupa 4.png" },
+    { nome: "Moletom Cinza", preco: "R$89,99", img: "img/roupa 5.png" },
+    { nome: "Jeans Slim Black", preco: "R$89,99", img: "img/roupa 6.png" },
+    { nome: "Jaqueta Bege", preco: "R$89,99", img: "img/roupa 7.png" },
+    { nome: "Boné Preto", preco: "R$89,99", img: "img/roupa 8.png" },
+];
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const produto = produtos[id - 1];
+
+document.getElementById("nome-produto").innerText = produto.nome;
+document.getElementById("preco-produto").innerText = produto.preco;
+document.getElementById("img-produto").src = produto.img;
+
+let tamanhoSelecionado = "";
+
+function selecionarTamanho(btn) {
+    document.querySelectorAll(".tamanho-btn").forEach(b => b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+    tamanhoSelecionado = btn.innerText;
+}
+
+function add() {
+    if (!tamanhoSelecionado) {
+        alert("Selecione um tamanho");
+        return;
+    }
+
+    const item = {
+        nome: produto.nome,
+        tamanho: tamanhoSelecionado,
+        qtd: document.getElementById("qtd").value
+    };
+
+    adicionarSacola(item);
+    alert("Adicionado à sacola!");
+}
+</script>
+
+</body>
+</html>
