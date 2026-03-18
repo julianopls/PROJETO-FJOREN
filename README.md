@@ -1,9 +1,13 @@
-                                                            FJOREN
+<h1 align="center">👕 Fjoren</h1>
 
-Loja de roupas com provador virtual, proporcionando uma experiência moderna e interativa para os usuários.
+<p align="center">
+  Loja de roupas com <strong>provador virtual</strong>, proporcionando uma experiência moderna e interativa.
+</p>
 
+---
 
-                                                       Sobre o Projeto
+## 🧠 Sobre o Projeto
 
-O Fjoren é um sistema de loja de roupas que integra um provador virtual, permitindo que os usuários visualizem como as peças ficariam antes de realizar a compra.
-O objetivo do projeto é simular uma experiência de e-commerce inovadora, aplicando conceitos de desenvolvimento de software, organização de código e usabilidade.
+O <strong>Fjoren</strong> é um sistema de loja de roupas que integra um <strong>provador virtual</strong>, permitindo que os usuários visualizem como as peças ficariam antes de realizar uma compra.
+
+O projeto tem como objetivo simular uma experiência de <strong>e-commerce inovadora</strong>, aplicando conceitos de desenvolvimento de software, organização de código e usabilidade.
