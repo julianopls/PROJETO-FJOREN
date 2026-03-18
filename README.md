@@ -23,7 +23,7 @@ O sistema permite que **clientes** naveguem, experimentem virtualmente e comprem
  
 ---
  
-##  Tecnologias Utilizadas
+##  Instrumentos Utilizadas
  
 | Área | Tecnologia |
 |------|-----------|
