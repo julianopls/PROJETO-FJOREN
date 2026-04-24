@@ -11,29 +11,29 @@
 <body>
 
 <!-- NAV -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container d-flex align-items-center">
-
-        <!-- ESQUERDA -->
-        <a class="navbar-brand fw-bold" href="#">FJOREN</a>
-
-        <!-- CENTRO -->
-        <div class="collapse navbar-collapse justify-content-center">
-            <ul class="navbar-nav gap-4">
-                <li class="nav-item"><a class="nav-link" href="#">INICIO</a></li>
-                <li class="nav-item"><a class="nav-link" href="#categorias">CATEGORIAS</a></li>
-                <li class="nav-item"><a class="nav-link" href="#colecao">COLEÇÃO</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">SOBRE</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">CONTATO</a></li>
-            </ul>
-        </div>
-
-        <!-- DIREITA -->
-        <button onclick="toggleSacola()" class="btn text-light ms-auto">🛍</button>
-
+  <nav>
+    <a href="index.html" class="nav-logo">FJOREN</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="categoria1.html">Coleção</a></li>
+      <li><a href="provador.html" class="active">Provador</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-icons">
+      <a href="#" title="Conta">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </a>
+      <a href="#" title="Sacola">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </a>
     </div>
-</nav>
-
+  </nav>
 <!-- HERO -->
 <section class="hero">
     <div class="container content text-light">
