@@ -1,169 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>FJOREN</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FJOREN</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-logo">FJOREN</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Início</a></li>
-      <li><a href="categoria1.html">Coleção</a></li>
-      <li><a href="provador.html" class="active">Provador</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-    <div class="nav-icons">
-      <a href="#" title="Conta">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-        </svg>
-      </a>
-      <a href="#" title="Sacola">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-      </a>
-    </div>
-  </nav>
-<!-- HERO -->
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">FJOREN</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Início</a></li>
+    <li><a href="#colecao">Coleção</a></li>
+    <li><a href="provador.html">Provador</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="#" title="Conta" onclick="abrirModalAuth(); return false;" class="perfil-link">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </a>
+    <a href="#" title="Sacola" onclick="toggleSacola(); return false;" style="position:relative">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span class="sacola-badge">0</span>
+    </a>
+  </div>
+</nav>
+<!-- ── CAPA  ── -->
+
+<section class="top-capa"></section>
+
+<!-- ── GALERIA ── -->
+<section class="fj-galeria-section">
+  <div class="fj-page-wrapper">
+    <div class="fj-gallery-container" id="fj-gallery"></div>
+  </div>
+</section>
+
+<!-- ── HERO ── -->
 <section class="hero">
-    <div class="container content text-light">
-        <h1 class="title">T-SHIRT</h1>
-        <h4 class="subtitle">Basic Pack</h4>
-
-        <h2 class="price">R$159,99</h2>
-
-        <p class="desc">
-            Pack de camisetas básicas com design minimalista e versátil.
-        </p>
-
-        <button onclick="document.getElementById('colecao').scrollIntoView({behavior:'smooth'})" class="btn btn-custom mt-4">
-            VER COLEÇÃO
-        </button>
-    </div>
-
-    <div class="sidebar">
-        NEW ERA OF FASHION
-    </div>
+  <div class="sidebar">NEW ERA OF FASHION</div>
+  <div class="container content text-light">
+    <h1 class="title">T-SHIRT</h1>
+    <h4 class="subtitle">Basic Pack</h4>
+    <h2 class="price">R$159,99</h2>
+    <p class="desc">Pack de camisetas básicas com design minimalista e versátil.</p>
+    <button onclick="document.getElementById('categorias').scrollIntoView({behavior:'smooth'})" class="btn-custom mt-4">
+      VER COLEÇÃO
+    </button>
+  </div>
 </section>
 
-<!-- CATEGORIAS -->
+<!-- ── CATEGORIAS ── -->
 <section id="categorias" class="categorias">
-
-    <h2 class="titulo-colecao text-center text-light">CATEGORIAS</h2>
-
-    <div class="carousel-container">
-
-        <button class="nav-btn" onclick="voltar()">❮</button>
-        <div class="cards" id="cards"></div>
-        <button class="nav-btn" onclick="avancar()">❯</button>
-
-    </div>
-
+  <h2 class="titulo-colecao">CATEGORIAS</h2>
+  <div class="carousel-container">
+    <button class="nav-btn" onclick="voltar()">❮</button>
+    <div class="cards" id="cards"></div>
+    <button class="nav-btn" onclick="avancar()">❯</button>
+  </div>
 </section>
 
-<!-- COLEÇÃO -->
+<!-- ── COLEÇÃO ── -->
 <section id="colecao" class="colecao">
-    <div class="container">
-
-        <h2 class="titulo-colecao">COLEÇÃO</h2>
-
-        <div class="row g-4">
-
-            <div class="col-md-3">
-                <div id="produto-1" class="card-produto" onclick="abrirProduto(1)">
-                    <img src="img/fjoren1.png">
-                    <p class="categoria">CAMISETAS</p>
-                    <h5>Camiseta Preta Essential</h5>
-                    <span>R$89,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-2" class="card-produto" onclick="abrirProduto(2)">
-                    <img src="img/fjoren2.png">
-                    <p class="categoria">CAMISETAS</p>
-                    <h5>Camiseta Branca Classic</h5>
-                    <span>R$89,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-3" class="card-produto" onclick="abrirProduto(3)">
-                    <img src="img/fjoren3.png">
-                    <p class="categoria">MOLETONS</p>
-                    <h5>Hoodie Navy Premium</h5>
-                    <span>R$199,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-4" class="card-produto" onclick="abrirProduto(4)">
-                    <img src="img/fjoren4.png">
-                    <p class="categoria">CALÇAS</p>
-                    <h5>Calça Cargo Olive</h5>
-                    <span>R$179,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-5" class="card-produto" onclick="abrirProduto(5)">
-                    <img src="img/fjoren5.png">
-                    <p class="categoria">MOLETONS</p>
-                    <h5>Moletom Cinza</h5>
-                    <span>R$149,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-6" class="card-produto" onclick="abrirProduto(6)">
-                    <img src="img/fjoren6.png">
-                    <p class="categoria">CALÇAS</p>
-                    <h5>Jeans Slim Black</h5>
-                    <span>R$159,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-7" class="card-produto" onclick="abrirProduto(7)">
-                    <img src="img/fjoren7.png">
-                    <p class="categoria">JAQUETAS</p>
-                    <h5>Jaqueta Bege</h5>
-                    <span>R$229,99</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div id="produto-8" class="card-produto" onclick="abrirProduto(8)">
-                    <img src="img/fjoren8.png">
-                    <p class="categoria">BONÉS</p>
-                    <h5>Boné Preto</h5>
-                    <span>R$79,99</span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
+  <div class="container">
+    <h2 class="titulo-colecao" style="color:#fff; margin-bottom:40px">COLEÇÃO</h2>
+    <div class="row g-4" id="colecao-grid"></div>
+  </div>
 </section>
 
-<!-- SACOLA -->
+<!-- ── SACOLA ── -->
 <div id="sacola" class="sacola">
-    <h3>Sacola</h3>
-    <div id="itens-sacola"></div>
+  <h3>
+    Sacola
+    <button class="sacola-fechar" onclick="toggleSacola()">×</button>
+  </h3>
+  <div id="itens-sacola"></div>
+  <div class="sacola-footer">
+    <div class="sacola-total-row">
+      <span class="sacola-total-label">Total</span>
+      <span id="sacola-total">R$0,00</span>
+    </div>
     <button class="comprar">Finalizar Compra</button>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<!-- ── MODAL AUTH ── -->
+<div id="modal-auth" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-fechar" onclick="fecharModalAuth()">×</button>
+    <span class="modal-logo">FJOREN</span>
 
+    <div class="auth-abas">
+      <button class="auth-aba ativa" data-aba="login" onclick="trocarAba('login')">Entrar</button>
+      <button class="auth-aba" data-aba="cadastro" onclick="trocarAba('cadastro')">Cadastrar</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="form-login" class="auth-form ativo" onsubmit="fazerLogin(event)">
+      <div class="form-group">
+        <label>Email</label>
+        <input id="log-email" type="email" placeholder="seu@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input id="log-senha" type="password" placeholder="••••••" required>
+      </div>
+      <button class="btn-auth" type="submit">Entrar</button>
+    </form>
+
+    <!-- CADASTRO -->
+    <form id="form-cadastro" class="auth-form" onsubmit="cadastrar(event)">
+      <div class="form-group">
+        <label>Nome completo *</label>
+        <input id="cad-nome" type="text" placeholder="Seu nome" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email *</label>
+          <input id="cad-email" type="email" placeholder="email@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Senha *</label>
+          <input id="cad-senha" type="password" placeholder="••••••" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>CEP *</label>
+        <input id="cad-cep" type="text" placeholder="00000-000" maxlength="9" required
+               oninput="this.value=this.value.replace(/\D/g,'').replace(/^(\d{5})(\d)/,'$1-$2')"
+               onblur="buscarCEP(this.value)">
+      </div>
+      <div class="form-group">
+        <label>Rua</label>
+        <input id="cad-rua" type="text" placeholder="Preenchido automaticamente">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Bairro</label>
+          <input id="cad-bairro" type="text">
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input id="cad-cidade" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Estado</label>
+        <input id="cad-estado" type="text" maxlength="2">
+      </div>
+      <button class="btn-auth" type="submit">Criar conta</button>
+    </form>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="sacola.js"></script>
+<script src="script.js"></script>
+<script src="galeria.js"></script>
 </body>
 </html>

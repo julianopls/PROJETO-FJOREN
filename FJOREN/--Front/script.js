@@ -1,94 +1,71 @@
-const categorias = [
-    { nome: "1", link: "categoria1.html" },
-    { nome: "2", link: "categoria2.html" },
-    { nome: "3", link: "categoria3.html" },
-    { nome: "4", link: "categoria4.html" },
-    { nome: "5", link: "categoria5.html" },
-    { nome: "6", link: "categoria6.html" },
-    { nome: "7", link: "categoria7.html" }
-];
+// =============================================
+// FJOREN — SCRIPT.JS (index.html)
+// =============================================
 
-let index = 0;
+let carrosselIndex = 0;
+const VISIVEIS = 3;
 
-/* ========= CATEGORIAS ========= */
-function render() {
-    const container = document.getElementById("cards");
-    if (!container) return;
+// ── CARROSSEL DE CATEGORIAS ──────────────────────────────────────
+function renderCarrossel() {
+  const container = document.getElementById('cards');
+  if (!container || typeof CATEGORIAS === 'undefined') return;
 
-    container.innerHTML = "";
+  container.innerHTML = '';
+  const total = CATEGORIAS.length;
+  const start = ((carrosselIndex % total) + total) % total;
 
-    for (let i = 0; i < 3; i++) {
-        let pos = (index + i) % categorias.length;
-        let cat = categorias[pos];
-
-        container.innerHTML += `
-            <div class="card-cat" onclick="window.location.href='${cat.link}'">
-                <img src="img/roupa${pos + 1}.png">
-                <span>${cat.nome}</span>
-            </div>
-        `;
-    }
+  for (let i = 0; i < VISIVEIS; i++) {
+    const cat = CATEGORIAS[(start + i) % total];
+    const card = document.createElement('div');
+    card.className = 'card-cat';
+    card.innerHTML = `
+      <div class="card-cat-icone">${cat.icone}</div>
+      <span>${i + start + 1}</span>
+      <p>${cat.nome}</p>`;
+    card.onclick = () => window.location.href = cat.arquivo;
+    container.appendChild(card);
+  }
 }
 
 function avancar() {
-    index = (index + 1) % categorias.length;
-    render();
+  carrosselIndex++;
+  renderCarrossel();
 }
 
 function voltar() {
-    index = (index - 1 + categorias.length) % categorias.length;
-    render();
+  carrosselIndex--;
+  renderCarrossel();
 }
 
-render();
+// ── COLEÇÃO ──────────────────────────────────────────────────────
+function renderColecao() {
+  const container = document.getElementById('colecao-grid');
+  if (!container || typeof COLECAO === 'undefined') return;
 
-/* ========= PRODUTO ========= */
-function abrirProduto(id) {
-    window.location.href = "produto.html?id=" + id;
+  container.innerHTML = '';
+  COLECAO.forEach(p => {
+    const col = document.createElement('div');
+    col.className = 'col-md-3';
+    col.innerHTML = `
+      <div class="card-produto" onclick="abrirProduto(${p.id}, '${encodeURIComponent(JSON.stringify(p))}')">
+        <img src="${p.img}" alt="${p.nome}" loading="lazy" onerror="this.style.background='#2a2a2a'">
+        <p class="categoria">${p.categoria}</p>
+        <h5>${p.nome}</h5>
+        <span>R$${p.preco.toFixed(2).replace('.', ',')}</span>
+      </div>`;
+    container.appendChild(col);
+  });
 }
 
-/* ========= SACOLA ========= */
-function toggleSacola() {
-    document.getElementById("sacola").classList.toggle("ativa");
+function abrirProduto(id, dadosEnc) {
+  if (dadosEnc) {
+    sessionStorage.setItem('produto_atual', decodeURIComponent(dadosEnc));
+  }
+  window.location.href = `produto.html?id=${id}`;
 }
 
-/* pega sacola do localStorage */
-function getSacola() {
-    return JSON.parse(localStorage.getItem("sacola")) || [];
-}
-
-/* salva sacola */
-function salvarSacola(lista) {
-    localStorage.setItem("sacola", JSON.stringify(lista));
-}
-
-/* adicionar item */
-function adicionarSacola(produto) {
-    let sacola = getSacola();
-    sacola.push(produto);
-    salvarSacola(sacola);
-    renderSacola();
-}
-
-/* renderizar */
-function renderSacola() {
-    const container = document.getElementById("itens-sacola");
-    if (!container) return;
-
-    const sacola = getSacola();
-    container.innerHTML = "";
-
-    if (sacola.length === 0) {
-        container.innerHTML = "<p>Sacola vazia</p>";
-        return;
-    }
-
-    sacola.forEach(item => {
-        container.innerHTML += `
-            <p>${item.nome} | ${item.tamanho} | Qtd: ${item.qtd}</p>
-        `;
-    });
-}
-
-/* carregar sacola ao abrir */
-renderSacola();
+// ── INIT ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderCarrossel();
+  renderColecao();
+});
