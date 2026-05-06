@@ -1,0 +1,562 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-04-29T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.1.0",
+  "resources": [
+    {
+      "_id": "wrk_001",
+      "_type": "workspace",
+      "name": "API - Loja",
+      "description": "Coleção gerada a partir do schema Prisma",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_001",
+      "_type": "environment",
+      "parentId": "wrk_001",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3000",
+        "token": ""
+      }
+    },
+
+    { "_id": "fld_usuarios", "_type": "request_group", "parentId": "wrk_001", "name": "👤 Usuários" },
+    { "_id": "fld_colecoes", "_type": "request_group", "parentId": "wrk_001", "name": "🗂️ Coleções" },
+    { "_id": "fld_produtos", "_type": "request_group", "parentId": "wrk_001", "name": "🛍️ Produtos" },
+    { "_id": "fld_estoque", "_type": "request_group", "parentId": "wrk_001", "name": "📦 Estoque" },
+    { "_id": "fld_carrinho", "_type": "request_group", "parentId": "wrk_001", "name": "🛒 Carrinho" },
+    { "_id": "fld_pedidos", "_type": "request_group", "parentId": "wrk_001", "name": "📋 Pedidos" },
+    { "_id": "fld_avaliacoes", "_type": "request_group", "parentId": "wrk_001", "name": "⭐ Avaliações" },
+    { "_id": "fld_avisos", "_type": "request_group", "parentId": "wrk_001", "name": "📢 Avisos" },
+    { "_id": "fld_logs", "_type": "request_group", "parentId": "wrk_001", "name": "🔍 Logs Admin" },
+
+    {
+      "_id": "req_auth_register",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Registrar usuário",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/register",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@email.com\",\n  \"senha\": \"senha123\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_login",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Login",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"joao@email.com\",\n  \"senha\": \"senha123\"\n}"
+      }
+    },
+    {
+      "_id": "req_usuarios_list",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Listar usuários",
+      "method": "GET",
+      "url": "{{ base_url }}/usuarios",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_usuarios_get",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Buscar usuário por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/usuarios/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_usuarios_update",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Atualizar usuário",
+      "method": "PUT",
+      "url": "{{ base_url }}/usuarios/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"João Atualizado\",\n  \"email\": \"joao_novo@email.com\"\n}"
+      }
+    },
+    {
+      "_id": "req_usuarios_delete",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Deletar usuário",
+      "method": "DELETE",
+      "url": "{{ base_url }}/usuarios/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_colecoes_list",
+      "_type": "request",
+      "parentId": "fld_colecoes",
+      "name": "Listar coleções",
+      "method": "GET",
+      "url": "{{ base_url }}/colecoes",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_colecoes_get",
+      "_type": "request",
+      "parentId": "fld_colecoes",
+      "name": "Buscar coleção por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/colecoes/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_colecoes_create",
+      "_type": "request",
+      "parentId": "fld_colecoes",
+      "name": "Criar coleção",
+      "method": "POST",
+      "url": "{{ base_url }}/colecoes",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Verão 2026\",\n  \"descricao\": \"Coleção de verão\",\n  \"limiteProdutos\": 50,\n  \"dataInicio\": \"2026-01-01T00:00:00.000Z\",\n  \"dataFim\": \"2026-03-31T23:59:59.000Z\"\n}"
+      }
+    },
+    {
+      "_id": "req_colecoes_update",
+      "_type": "request",
+      "parentId": "fld_colecoes",
+      "name": "Atualizar coleção",
+      "method": "PUT",
+      "url": "{{ base_url }}/colecoes/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Verão 2026 Atualizada\",\n  \"limiteProdutos\": 100\n}"
+      }
+    },
+    {
+      "_id": "req_colecoes_delete",
+      "_type": "request",
+      "parentId": "fld_colecoes",
+      "name": "Deletar coleção",
+      "method": "DELETE",
+      "url": "{{ base_url }}/colecoes/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_produtos_list",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Listar produtos",
+      "method": "GET",
+      "url": "{{ base_url }}/produtos",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_produtos_get",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Buscar produto por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/produtos/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_produtos_create",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Criar produto",
+      "method": "POST",
+      "url": "{{ base_url }}/produtos",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"idColecao\": 1,\n  \"nome\": \"Camiseta Branca\",\n  \"descricao\": \"Camiseta básica branca\",\n  \"preco\": 59.90,\n  \"categoria\": \"Camisetas\",\n  \"estilo\": \"Casual\"\n}"
+      }
+    },
+    {
+      "_id": "req_produtos_update",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Atualizar produto",
+      "method": "PUT",
+      "url": "{{ base_url }}/produtos/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Camiseta Branca Premium\",\n  \"preco\": 79.90\n}"
+      }
+    },
+    {
+      "_id": "req_produtos_delete",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Deletar produto",
+      "method": "DELETE",
+      "url": "{{ base_url }}/produtos/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_estoque_list",
+      "_type": "request",
+      "parentId": "fld_estoque",
+      "name": "Listar estoque",
+      "method": "GET",
+      "url": "{{ base_url }}/estoque",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_estoque_get_produto",
+      "_type": "request",
+      "parentId": "fld_estoque",
+      "name": "Estoque por produto",
+      "method": "GET",
+      "url": "{{ base_url }}/estoque/produto/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_estoque_create",
+      "_type": "request",
+      "parentId": "fld_estoque",
+      "name": "Adicionar estoque",
+      "method": "POST",
+      "url": "{{ base_url }}/estoque",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"idProduto\": 1,\n  \"tamanho\": \"M\",\n  \"cor\": \"Branco\",\n  \"quantidade\": 100\n}"
+      }
+    },
+    {
+      "_id": "req_estoque_update",
+      "_type": "request",
+      "parentId": "fld_estoque",
+      "name": "Atualizar estoque",
+      "method": "PUT",
+      "url": "{{ base_url }}/estoque/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"quantidade\": 80\n}"
+      }
+    },
+    {
+      "_id": "req_estoque_delete",
+      "_type": "request",
+      "parentId": "fld_estoque",
+      "name": "Remover estoque",
+      "method": "DELETE",
+      "url": "{{ base_url }}/estoque/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_carrinho_get",
+      "_type": "request",
+      "parentId": "fld_carrinho",
+      "name": "Ver carrinho do usuário",
+      "method": "GET",
+      "url": "{{ base_url }}/carrinho",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_carrinho_add",
+      "_type": "request",
+      "parentId": "fld_carrinho",
+      "name": "Adicionar item ao carrinho",
+      "method": "POST",
+      "url": "{{ base_url }}/carrinho/itens",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"idProduto\": 1,\n  \"quantidade\": 2,\n  \"tamanho\": \"M\"\n}"
+      }
+    },
+    {
+      "_id": "req_carrinho_update",
+      "_type": "request",
+      "parentId": "fld_carrinho",
+      "name": "Atualizar item do carrinho",
+      "method": "PUT",
+      "url": "{{ base_url }}/carrinho/itens/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"quantidade\": 3\n}"
+      }
+    },
+    {
+      "_id": "req_carrinho_remove",
+      "_type": "request",
+      "parentId": "fld_carrinho",
+      "name": "Remover item do carrinho",
+      "method": "DELETE",
+      "url": "{{ base_url }}/carrinho/itens/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_carrinho_clear",
+      "_type": "request",
+      "parentId": "fld_carrinho",
+      "name": "Limpar carrinho",
+      "method": "DELETE",
+      "url": "{{ base_url }}/carrinho",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_pedidos_list",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Listar pedidos (admin)",
+      "method": "GET",
+      "url": "{{ base_url }}/pedidos",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_pedidos_meus",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Meus pedidos",
+      "method": "GET",
+      "url": "{{ base_url }}/pedidos/meus",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_pedidos_get",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Buscar pedido por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/pedidos/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_pedidos_create",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Criar pedido (checkout)",
+      "method": "POST",
+      "url": "{{ base_url }}/pedidos",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"itens\": [\n    {\n      \"idProduto\": 1,\n      \"quantidade\": 2,\n      \"precoUnitario\": 59.90,\n      \"tamanho\": \"M\"\n    }\n  ]\n}"
+      }
+    },
+    {
+      "_id": "req_pedidos_status",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Atualizar status do pedido",
+      "method": "PATCH",
+      "url": "{{ base_url }}/pedidos/1/status",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"confirmado\"\n}"
+      }
+    },
+    {
+      "_id": "req_pedidos_cancel",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Cancelar pedido",
+      "method": "PATCH",
+      "url": "{{ base_url }}/pedidos/1/cancelar",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_avaliacoes_list",
+      "_type": "request",
+      "parentId": "fld_avaliacoes",
+      "name": "Listar avaliações de um produto",
+      "method": "GET",
+      "url": "{{ base_url }}/avaliacoes/produto/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_avaliacoes_get",
+      "_type": "request",
+      "parentId": "fld_avaliacoes",
+      "name": "Buscar avaliação por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/avaliacoes/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_avaliacoes_create",
+      "_type": "request",
+      "parentId": "fld_avaliacoes",
+      "name": "Criar avaliação",
+      "method": "POST",
+      "url": "{{ base_url }}/avaliacoes",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"idProduto\": 1,\n  \"idPedido\": 1,\n  \"nota\": 5,\n  \"comentario\": \"Produto excelente, entrega rápida!\"\n}"
+      }
+    },
+    {
+      "_id": "req_avaliacoes_update",
+      "_type": "request",
+      "parentId": "fld_avaliacoes",
+      "name": "Atualizar avaliação",
+      "method": "PUT",
+      "url": "{{ base_url }}/avaliacoes/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nota\": 4,\n  \"comentario\": \"Muito bom, mas a embalagem poderia ser melhor.\"\n}"
+      }
+    },
+    {
+      "_id": "req_avaliacoes_delete",
+      "_type": "request",
+      "parentId": "fld_avaliacoes",
+      "name": "Deletar avaliação",
+      "method": "DELETE",
+      "url": "{{ base_url }}/avaliacoes/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_avisos_list",
+      "_type": "request",
+      "parentId": "fld_avisos",
+      "name": "Listar avisos",
+      "method": "GET",
+      "url": "{{ base_url }}/avisos",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_avisos_get",
+      "_type": "request",
+      "parentId": "fld_avisos",
+      "name": "Buscar aviso por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/avisos/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_avisos_create",
+      "_type": "request",
+      "parentId": "fld_avisos",
+      "name": "Criar aviso (admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/avisos",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"titulo\": \"Manutenção programada\",\n  \"conteudo\": \"O sistema estará em manutenção no dia 05/05 das 02h às 04h.\"\n}"
+      }
+    },
+    {
+      "_id": "req_avisos_update",
+      "_type": "request",
+      "parentId": "fld_avisos",
+      "name": "Atualizar aviso (admin)",
+      "method": "PUT",
+      "url": "{{ base_url }}/avisos/1",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"titulo\": \"Manutenção cancelada\",\n  \"conteudo\": \"A manutenção foi cancelada.\"\n}"
+      }
+    },
+    {
+      "_id": "req_avisos_delete",
+      "_type": "request",
+      "parentId": "fld_avisos",
+      "name": "Deletar aviso (admin)",
+      "method": "DELETE",
+      "url": "{{ base_url }}/avisos/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "req_logs_list",
+      "_type": "request",
+      "parentId": "fld_logs",
+      "name": "Listar logs (admin)",
+      "method": "GET",
+      "url": "{{ base_url }}/logs",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_logs_get",
+      "_type": "request",
+      "parentId": "fld_logs",
+      "name": "Buscar log por ID",
+      "method": "GET",
+      "url": "{{ base_url }}/logs/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_logs_usuario",
+      "_type": "request",
+      "parentId": "fld_logs",
+      "name": "Logs por usuário (admin)",
+      "method": "GET",
+      "url": "{{ base_url }}/logs/usuario/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    }
+  ]
+}
