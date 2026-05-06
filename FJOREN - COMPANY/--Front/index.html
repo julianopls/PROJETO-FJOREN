@@ -47,13 +47,13 @@
 
 <!-- ── HERO ── -->
 <section class="hero">
-  <div class="sidebar">NEW ERA OF FASHION</div>
+
   <div class="container content text-light">
     <h1 class="title">T-SHIRT</h1>
     <h4 class="subtitle">Basic Pack</h4>
     <h2 class="price">R$159,99</h2>
     <p class="desc">Pack de camisetas básicas com design minimalista e versátil.</p>
-    <button onclick="document.getElementById('categorias').scrollIntoView({behavior:'smooth'})" class="btn-custom mt-4">
+    <button onclick="document.getElementById('colecao').scrollIntoView({behavior:'smooth'})" class="btn-custom mt-4">
       VER COLEÇÃO
     </button>
   </div>
@@ -69,10 +69,27 @@
   </div>
 </section>
 
+
+<!-- ── CARROSSEL 3D ── -->
+<section class="spin-section">
+  <div class="spin-container">
+    <div class="spin-inner">
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1603320284370-d33c0e5ff086?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1633871771924-380d6123659b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1571928002685-15aeba39a2d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1605643362116-ccf4302f9453?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1634473117419-92371b2bf457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1697375805257-a5220aa18c55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1698831695020-2e94ebfdfed7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+      <div class="spin-card"><img src="https://images.unsplash.com/photo-1577222960172-18c61acf6791?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ── COLEÇÃO ── -->
 <section id="colecao" class="colecao">
   <div class="container">
-    <h2 class="titulo-colecao" style="color:#fff; margin-bottom:40px">COLEÇÃO</h2>
+    <h2 class="titulo-colecao" style="color:#ff0000; margin-bottom:40px">COLEÇÃO</h2>
     <div class="row g-4" id="colecao-grid"></div>
   </div>
 </section>
@@ -166,5 +183,7 @@
 <script src="sacola.js"></script>
 <script src="script.js"></script>
 <script src="galeria.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="move.js"></script>
 </body>
 </html>

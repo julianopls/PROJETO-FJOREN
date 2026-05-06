@@ -22,14 +22,13 @@ const damping = 0.94;
 const smooth = 0.08;
 
 /* ===============================
-   MONTAR
+   MONTAR GALERIA
 ================================ */
 function montar() {
   gallery.innerHTML = "";
 
-  for(let r = 0; r < repeticoes; r++) {
+  for (let r = 0; r < repeticoes; r++) {
     imagens.forEach(src => {
-
       const item = document.createElement("div");
       item.className = "fj-item";
 
@@ -39,7 +38,6 @@ function montar() {
 
       item.appendChild(img);
       gallery.appendChild(item);
-
     });
   }
 }
@@ -63,19 +61,18 @@ let timer = 0;
 /* ===============================
    UTIL
 ================================ */
-function lerp(a,b,t){
-  return a + (b-a)*t;
+function lerp(a, b, t) {
+  return a + (b - a) * t;
 }
 
-function larguraBloco(){
+function larguraBloco() {
   return gallery.scrollWidth / repeticoes;
 }
 
 /* ===============================
-   START
+   INICIAR
 ================================ */
-function iniciar(){
-
+function iniciar() {
   const bloco = larguraBloco();
 
   target = bloco * 6;
@@ -84,29 +81,30 @@ function iniciar(){
   gallery.scrollLeft = current;
 }
 
-setTimeout(iniciar,150);
+setTimeout(iniciar, 150);
 
 /* ===============================
-   WHEEL
+   WHEEL (APENAS NA GALERIA)
 ================================ */
-window.addEventListener("wheel", e => {
+gallery.addEventListener(
+  "wheel",
+  e => {
+    e.preventDefault();
 
-  e.preventDefault();
+    velocity += e.deltaY * 0.45;
 
-  velocity += e.deltaY * 0.45;
+    if (velocity > 80) velocity = 80;
+    if (velocity < -80) velocity = -80;
 
-  if(velocity > 80) velocity = 80;
-  if(velocity < -80) velocity = -80;
-
-  timer = 0;
-
-},{ passive:false });
+    timer = 0;
+  },
+  { passive: false }
+);
 
 /* ===============================
    DRAG
 ================================ */
 gallery.addEventListener("pointerdown", e => {
-
   dragging = true;
   startX = e.clientX;
   startScroll = target;
@@ -115,102 +113,85 @@ gallery.addEventListener("pointerdown", e => {
   timer = 0;
 
   gallery.style.cursor = "grabbing";
-
 });
 
 window.addEventListener("pointermove", e => {
-
-  if(!dragging) return;
+  if (!dragging) return;
 
   const dx = startX - e.clientX;
   target = startScroll + dx;
-
 });
 
 window.addEventListener("pointerup", () => {
-
   dragging = false;
   gallery.style.cursor = "grab";
-
 });
 
 /* ===============================
    LOOP INFINITO
 ================================ */
-function infinito(){
-
+function infinito() {
   const bloco = larguraBloco();
 
-  if(target <= bloco * 2){
+  if (target <= bloco * 2) {
     target += bloco;
     current += bloco;
   }
 
-  if(target >= bloco * (repeticoes - 2)){
+  if (target >= bloco * (repeticoes - 2)) {
     target -= bloco;
     current -= bloco;
   }
-
 }
 
 /* ===============================
    AUTOPLAY
 ================================ */
-function autoplay(){
-
+function autoplay() {
   timer++;
 
-  if(timer > 600){
+  if (timer > 600) {
     direcao *= -1;
     timer = 0;
   }
 
   target += autoVel * direcao;
-
 }
 
 /* ===============================
    PARALLAX
 ================================ */
-function parallax(){
-
+function parallax() {
   const itens = document.querySelectorAll(".fj-item");
   const centro = window.innerWidth / 2;
 
   itens.forEach(item => {
-
     const img = item.querySelector("img");
     const rect = item.getBoundingClientRect();
 
-    let offset =
-      (centro - (rect.left + rect.width/2)) / 7;
+    let offset = (centro - (rect.left + rect.width / 2)) / 7;
 
-    if(offset > 70) offset = 70;
-    if(offset < -70) offset = -70;
+    if (offset > 70) offset = 70;
+    if (offset < -70) offset = -70;
 
     img.style.transform =
       `translate(calc(-50% + ${offset}px), -50%) scale(1.08)`;
-
   });
-
 }
 
 /* ===============================
    LOOP
 ================================ */
-function animate(){
-
-  if(!dragging){
-
+function animate() {
+  if (!dragging) {
     autoplay();
 
     target += velocity;
     velocity *= damping;
 
-    if(Math.abs(velocity) < 0.02){
+    if (Math.abs(velocity) < 0.02) {
       velocity = 0;
     }
-
   }
 
   infinito();
@@ -224,6 +205,9 @@ function animate(){
   requestAnimationFrame(animate);
 }
 
+/* ===============================
+   START
+================================ */
 gallery.style.cursor = "grab";
 
 animate();

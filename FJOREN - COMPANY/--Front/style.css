@@ -13,7 +13,7 @@
    VARIÁVEIS
 ========================================================== */
 :root{
-  --bg:#0d0d0d;
+  --bg:#ffffff;
   --surface:#161616;
   --surface2:#1a1a1a;
   --border:#2a2a2a;
@@ -64,7 +64,7 @@ nav{
 
   padding:30px 50px;
   background:transparent;
-  border-bottom:.5px solid rgba(255,255,255,.06);
+  border-bottom:.5px solid rgba(82, 82, 82, 0);
 }
 
 nav.sticky,
@@ -157,7 +157,7 @@ nav.provador-nav{
 .top-capa{
   width:100%;
   height:100vh;
-  background:url("img/capa.png") center center / cover no-repeat;
+  background:url("img/capa1.png") center center / cover no-repeat;
 }
 
 /* ==========================================================
@@ -167,7 +167,7 @@ nav.provador-nav{
 .fj-galeria-section{
   width:100%;
   height:100vh;
-  background:rgba(85, 85, 77, 0.377);
+  background:rgb(255, 255, 255);
   position:relative;
   overflow:hidden;
 
@@ -261,15 +261,16 @@ nav.provador-nav{
   position:relative;
   z-index:2;
 
-  height:105vh;
+  height:107vh;
   display:flex;
   align-items:center;
 
-  background:
-    linear-gradient(to right, rgba(0,0,0,.88) 0%, rgba(0,0,0,.25) 100%),
-    url("img/logo.png") no-repeat right center;
-  background-size:contain;
+  width:100%;
+  height:100vh;
+  background:url("img/logo1.png") center center / cover no-repeat;
 }
+
+
 
 .content{
   max-width:520px;
@@ -277,6 +278,7 @@ nav.provador-nav{
 }
 
 .title{
+  color: #000000ac;
   font-family:'Barlow Condensed',sans-serif;
   font-size:clamp(60px,8vw,100px);
   font-weight:900;
@@ -286,11 +288,12 @@ nav.provador-nav{
 
 .subtitle{
   margin-top:4px;
-  color:#ccc;
+  color:#cdb514;
   font-size:1rem;
 }
 
 .price{
+  color: rgb(248, 72, 72);
   margin:18px 0;
   font-family:'Barlow Condensed',sans-serif;
   font-size:2.2rem;
@@ -299,7 +302,7 @@ nav.provador-nav{
 
 .desc{
   max-width:340px;
-  color:#ddd;
+  color:#373737;
   font-size:.88rem;
   line-height:1.6;
 }
@@ -309,8 +312,8 @@ nav.provador-nav{
   border:none;
   border-radius:var(--radius);
 
-  background:rgba(255,255,255,.92);
-  color:#000;
+  background:rgba(131, 131, 131, 0.92);
+  color:hsl(0, 33%, 96%);
 
   font-family:'Barlow Condensed',sans-serif;
   font-size:.78rem;
@@ -327,40 +330,19 @@ nav.provador-nav{
   transform:translateY(-2px);
 }
 
-.sidebar{
-  position:absolute;
-  top:0;
-  left:0;
-
-  width:68px;
-  height:100%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:#000;
-  color:#555;
-
-  font-size:11px;
-  letter-spacing:4px;
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-}
-
 /* ==========================================================
    CATEGORIAS
 ========================================================== */
 .categorias{
+  background-color: rgb(255, 255, 255);
   padding:80px 0;
   text-align:center;
-  background:var(--surface);
 }
 
 .titulo-colecao{
   margin-bottom:40px;
 
-  color:#fff;
+  color:#1b1b1b;
   font-family:'Barlow Condensed',sans-serif;
   font-size:1.3rem;
   font-weight:800;
@@ -405,8 +387,10 @@ nav.provador-nav{
   border-color:rgba(255,255,255,.3);
 }
 
+
+
 /* ==========================================================
-   PRODUTOS
+   COLECAO
 ========================================================== */
 .colecao{
   padding:80px 0;
@@ -415,7 +399,7 @@ nav.provador-nav{
 
 .card-produto{
   position:relative;
-  color:#fff;
+  color:#353535;
   cursor:pointer;
 }
 
@@ -443,7 +427,7 @@ nav.provador-nav{
   border:none;
 
   background:rgba(0,0,0,.82);
-  color:#fff;
+  color:#ff2727;
 
   transform:translateY(100%);
   transition:.25s;
@@ -452,6 +436,148 @@ nav.provador-nav{
 .card-produto:hover .btn-add-rapido{
   transform:translateY(0);
 }
+
+
+/* =====================================================
+CARROSSEL 3D
+===================================================== */
+
+.spin-section{
+  width:100%;
+  min-height:100vh;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  perspective:1600px;
+}
+
+.spin-container{
+  width:420px;
+  height:420px;
+  position:relative;
+  transform-style:preserve-3d;
+}
+
+.spin-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  animation:spinRotate 28s linear infinite;
+}
+
+.spin-card{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:170px;
+  height:300px;
+  margin-left:-85px;
+  margin-top:-150px;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+
+.spin-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:contrast(1.05) saturate(1.05);
+}
+
+.card-cat{
+  width:240px;
+  height:380px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  border-radius:8px;
+  background:#000000;
+}
+
+.card-cat-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.card-cat:hover .card-cat-img{
+  transform:scale(1.08);
+}
+
+.card-cat span{
+  position:absolute;
+  top:15px;
+  left:15px;
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  background:rgba(0,0,0,.5);
+  padding:4px 8px;
+}
+
+.card-cat p{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  color:#807c7cef;
+  font-size:22px;
+  font-weight:700;
+  margin:0;
+}
+
+/* posições */
+
+.spin-card:nth-child(1){transform:rotateY(0deg) translateZ(340px);}
+.spin-card:nth-child(2){transform:rotateY(45deg) translateZ(340px);}
+.spin-card:nth-child(3){transform:rotateY(90deg) translateZ(340px);}
+.spin-card:nth-child(4){transform:rotateY(135deg) translateZ(340px);}
+.spin-card:nth-child(5){transform:rotateY(180deg) translateZ(340px);}
+.spin-card:nth-child(6){transform:rotateY(225deg) translateZ(340px);}
+.spin-card:nth-child(7){transform:rotateY(270deg) translateZ(340px);}
+.spin-card:nth-child(8){transform:rotateY(315deg) translateZ(340px);}
+
+@keyframes spinRotate{
+  0%{
+    transform:rotateX(10deg) rotateY(0deg);
+  }
+  100%{
+    transform:rotateX(10deg) rotateY(-360deg);
+  }
+}
+
+/* responsivo */
+
+@media(max-width:700px){
+
+  .spin-container{
+    width:280px;
+    height:280px;
+  }
+
+  .spin-card{
+    width:110px;
+    height:200px;
+    margin-left:-55px;
+    margin-top:-100px;
+  }
+
+  .spin-card:nth-child(1){transform:rotateY(0deg) translateZ(220px);}
+  .spin-card:nth-child(2){transform:rotateY(45deg) translateZ(220px);}
+  .spin-card:nth-child(3){transform:rotateY(90deg) translateZ(220px);}
+  .spin-card:nth-child(4){transform:rotateY(135deg) translateZ(220px);}
+  .spin-card:nth-child(5){transform:rotateY(180deg) translateZ(220px);}
+  .spin-card:nth-child(6){transform:rotateY(225deg) translateZ(220px);}
+  .spin-card:nth-child(7){transform:rotateY(270deg) translateZ(220px);}
+  .spin-card:nth-child(8){transform:rotateY(315deg) translateZ(220px);}
+}
+
+
 
 /* ==========================================================
    SACOLA

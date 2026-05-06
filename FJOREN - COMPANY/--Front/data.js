@@ -5,15 +5,14 @@
 // =============================================
 
 const CATEGORIAS = [
-  { id: 1, nome: "Bonés",          icone: "🧢", arquivo: "categoria1.html" },
-  { id: 2, nome: "Camisas Sociais",icone: "👔", arquivo: "categoria2.html" },
-  { id: 3, nome: "Shorts",         icone: "🩳", arquivo: "categoria3.html" },
-  { id: 4, nome: "Moletons",       icone: "🧥", arquivo: "categoria4.html" },
-  { id: 5, nome: "Camisetas",      icone: "👕", arquivo: "categoria5.html" },
-  { id: 6, nome: "Calças Jeans",   icone: "👖", arquivo: "categoria6.html" },
-  { id: 7, nome: "Calças Moletom", icone: "🩱", arquivo: "categoria7.html" },
+  { id: 1, nome: "Bonés", imagem: "img/roupa7.png", arquivo: "categoria1.html" },
+  { id: 2, nome: "Camisas Sociais", imagem: "img/roupa1.png", arquivo: "categoria2.html" },
+  { id: 3, nome: "Shorts", imagem: "img/roupa2.png", arquivo: "categoria3.html" },
+  { id: 4, nome: "Calça Moleton", imagem: "img/roupa6.png", arquivo: "categoria4.html" },
+  { id: 5, nome: "Camisetas", imagem: "img/roupa4.png", arquivo: "categoria5.html" },
+  { id: 6, nome: "Calças Jeans", imagem: "img/roupa5.png", arquivo: "categoria6.html" },
+  { id: 7, nome: "Blusa Moletom", imagem: "img/roupa3.png", arquivo: "categoria7.html" }
 ];
-
 const PRODUTOS = {
 
   // ── CATEGORIA 1: BONÉS ──────────────────────────────────────────
